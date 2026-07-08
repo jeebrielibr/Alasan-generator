@@ -1,6 +1,7 @@
-# Alasan Generator
+# Alasan Generator 
 
-Proyek ini adalah aplikasi web sederhana yang digunakan untuk menghasilkan berbagai alasan secara otomatis. Cocok digunakan untuk keperluan hiburan, tugas, atau kebutuhan lainnya yang memerlukan alasan secara instan.
+Proyek ini adalah implementasi sederhana dalam menerapkan n8n sebagai backend.
+Aplikasi web sederhana yang digunakan untuk menghasilkan berbagai alasan secara otomatis. Cocok digunakan untuk keperluan hiburan, tugas, atau kebutuhan lainnya yang memerlukan alasan secara instan.
 
 ## Fitur
 - Antarmuka web sederhana dan mudah digunakan
