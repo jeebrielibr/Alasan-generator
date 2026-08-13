@@ -4,7 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Banyak Alasan Generator</title>
+    
+    <!-- Handwritten Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&family=Patrick+Hand&display=swap" rel="stylesheet">
+
     <style>
+        :root {
+            /* Design Tokens */
+            --bg: #fdfbf7;
+            --fg: #2d2d2d;
+            --muted: #e5e0d8;
+            --accent: #ff4d4d;
+            --blue: #2d5da1;
+            --post-it: #fff9c4;
+            
+            /* Reusable Wobbly Radius */
+            --wobbly-sm: 255px 15px 225px 15px / 15px 225px 15px 255px;
+            --wobbly-md: 15px 225px 15px 225px / 225px 15px 225px 15px;
+            --wobbly-lg: 255px 25px 225px 25px / 25px 225px 25px 255px;
+            
+            /* Hard Offset Shadows */
+            --shadow-hard: 4px 4px 0px 0px var(--fg);
+            --shadow-hard-emphasis: 8px 8px 0px 0px var(--fg);
+            --shadow-hard-hover: 2px 2px 0px 0px var(--fg);
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -12,118 +38,251 @@
         }
 
         body {
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Patrick Hand', cursive;
+            background-color: var(--bg);
+            /* Paper Texture */
+            background-image: radial-gradient(var(--muted) 1.5px, transparent 1.5px);
+            background-size: 24px 24px;
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             padding: 20px;
+            color: var(--fg);
         }
 
+        /* Main Container with Tape Decoration */
         .container {
-            background: white;
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-            max-width: 500px;
+            background: #fffff0;
+            padding: 50px 40px;
+            border: 3px solid var(--fg);
+            border-radius: var(--wobbly-md);
+            box-shadow: var(--shadow-hard-emphasis);
+            max-width: 550px;
             width: 100%;
             text-align: center;
+            position: relative;
+            transform: rotate(-1deg);
+            transition: transform 0.1s ease;
+        }
+
+        /* Tape Effect */
+        .container::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%) rotate(2deg);
+            width: 120px;
+            height: 35px;
+            background-color: rgba(45, 45, 45, 0.1);
+            border: 1px dashed rgba(45, 45, 45, 0.2);
+            z-index: 10;
         }
 
         h1 {
-            color: #333;
-            margin-bottom: 30px;
-            font-size: 2.5em;
-            font-weight: bold;
+            font-family: 'Kalam', cursive;
+            font-weight: 700;
+            margin-bottom: 15px;
+            font-size: 3em;
+            line-height: 1.1;
+            color: var(--fg);
+        }
+
+        h1 span {
+            display: inline-block;
+            transform: rotate(-3deg) translateY(-4px);
+            color: var(--accent);
         }
 
         .subtitle {
-            color: #666;
-            margin-bottom: 30px;
-            font-size: 1.1em;
+            color: rgba(0, 0, 0, 1);
+            margin-bottom: 35px;
+            font-size: 1.3em;
         }
 
         .input-group {
             margin-bottom: 30px;
+            position: relative;
         }
 
         input[type="text"] {
+            font-family: 'Patrick Hand', cursive;
             width: 100%;
-            padding: 15px;
-            border: 2px solid #e0e0e0;
-            border-radius: 10px;
-            font-size: 16px;
+            padding: 15px 20px;
+            font-size: 1.2rem;
+            color: var(--fg);
+            background: #fff;
+            border: 2px solid var(--fg);
+            border-radius: var(--wobbly-sm);
             outline: none;
-            transition: border-color 0.3s ease;
+            transition: all 0.1s ease;
+            box-shadow: var(--shadow-hard-hover);
         }
 
         input[type="text"]:focus {
-            border-color: #667eea;
+            border-color: var(--blue);
+            box-shadow: 0 0 0 4px rgba(45, 93, 161, 0.2), var(--shadow-hard-hover);
+        }
+
+        input[type="text"]::placeholder {
+            color: rgba(45, 45, 45, 0.4);
+            font-style: italic;
+        }
+
+        .btn-container {
+            position: relative;
+            display: inline-block;
+            width: 100%;
         }
 
         .generate-btn {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border: none;
-            padding: 15px 30px;
-            font-size: 18px;
-            border-radius: 10px;
+            font-family: 'Patrick Hand', cursive;
+            background: #ffffff;
+            color: var(--fg);
+            border: 3px solid var(--fg);
+            padding: 12px 24px;
+            font-size: 1.5rem;
+            border-radius: var(--wobbly-lg);
             cursor: pointer;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: var(--shadow-hard);
+            transition: all 0.1s ease;
             width: 100%;
             font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            min-height: 48px; /* Touch friendly */
         }
 
         .generate-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+            background: var(--accent);
+            color: #fff;
+            box-shadow: var(--shadow-hard-hover);
+            transform: translate(2px, 2px);
         }
 
         .generate-btn:active {
-            transform: translateY(0);
+            box-shadow: 0px 0px 0px 0px var(--fg);
+            transform: translate(4px, 4px);
         }
 
         .generate-btn:disabled {
-            opacity: 0.6;
+            opacity: 0.7;
             cursor: not-allowed;
+            background: var(--muted);
             transform: none;
+            box-shadow: var(--shadow-hard);
+        }
+
+        /* Hand-drawn arrow decoration */
+        .doodle-arrow {
+            position: absolute;
+            top: -40px;
+            right: -30px;
+            width: 60px;
+            height: 60px;
+            stroke: var(--fg);
+            stroke-width: 2.5;
+            fill: none;
+            transform: rotate(15deg);
+            display: none; /* Hidden on mobile */
+        }
+
+        @media (min-width: 768px) {
+            .doodle-arrow {
+                display: block;
+            }
         }
 
         .loading {
             display: none;
-            margin-top: 20px;
-            color: #667eea;
+            margin-top: 25px;
+            color: var(--blue);
+            font-size: 1.2rem;
             font-style: italic;
         }
 
         .result {
             margin-top: 30px;
-            padding: 20px;
-            background: #f8f9fa;
-            border-radius: 10px;
+            padding: 25px;
+            background: var(--post-it); /* Post-it yellow default */
+            border: 2px dashed var(--fg);
+            border-radius: var(--wobbly-sm);
             display: none;
             text-align: left;
+            position: relative;
+            transform: rotate(1deg);
+            box-shadow: 3px 3px 0px 0px rgba(45, 45, 45, 0.1);
         }
 
         .result.success {
-            background: #d4edda;
+            background: #e6f9e6;
+            border-color: #2e7d32;
         }
 
         .result.error {
-            background: #f8d7da;
+            background: #ffe6e6;
+            border-color: #c62828;
+        }
+
+        .result-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            gap: 10px;
+        }
+
+        .result-icon {
+            font-size: 1.5em;
+        }
+
+        .result-title {
+            font-family: 'Kalam', cursive;
+            font-size: 1.4em;
+            font-weight: 700;
+        }
+
+        .success .result-title { color: #2e7d32; }
+        .error .result-title { color: #c62828; }
+
+        .result-body {
+            background: rgba(255, 255, 255, 0.6);
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid var(--fg);
+        }
+
+        .result-body p {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+
+        .result-body p:last-child {
+            margin-bottom: 0;
         }
 
         .footer {
-            margin-top: 30px;
-            color: #999;
-            font-size: 0.9em;
+            margin-top: 35px;
+            color: rgba(0, 0, 0, 1);
+            font-size: 1.1em;
+            position: relative;
         }
+
+        /* Wavy underline for footer */
+        .footer p {
+            display: inline-block;
+            border-bottom: 2px wavy var(--accent);
+            padding-bottom: 2px;
+        }
+
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>🎭 Banyak Alasan Generator</h1>
+        <h1>Banyak Alasan <span>Generator!</span></h1>
         <p class="subtitle">Butuh alasan? Biarkan kami membuat "alasan" yang sempurna untukmu!</p>
         
         <form id="excuseForm">
@@ -136,9 +295,16 @@
                 >
             </div>
             
-            <button type="submit" class="generate-btn" id="generateBtn">
-                Generate Alasan
-            </button>
+            <div class="btn-container">
+                <!-- Hand-drawn SVG arrow pointing to button -->
+                <svg class="doodle-arrow" viewBox="0 0 100 100">
+                    <path d="M10,80 Q40,80 50,50 T90,20" stroke-dasharray="5,5" stroke-linecap="round"></path>
+                    <path d="M80,10 L90,20 L80,30" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+                <button type="submit" class="generate-btn" id="generateBtn">
+                    Generate Alasan
+                </button>
+            </div>
         </form>
         
         <div class="loading" id="loading">
@@ -203,15 +369,13 @@
                     }
                     
                     resultText.innerHTML = `
-                        <div style="text-align: left;">
-                            <div style="display: flex; align-items: center; margin-bottom: 15px;">
-                                <span style="color: #28a745; font-size: 1.5em; margin-right: 10px;">✅</span>
-                                <strong style="color: #28a745; font-size: 1.2em;">Berhasil!</strong>
-                            </div>
-                            <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; border-left: 4px solid #28a745;">
-                                <p style="margin-bottom: 10px;"><strong>Input:</strong> ${inputText}</p>
-                                <p style="margin-bottom: 0;"><strong>Response:</strong> ${excuseText}</p>
-                            </div>
+                        <div class="result-header">
+                            <span class="result-icon">✅</span>
+                            <span class="result-title">Berhasil!</span>
+                        </div>
+                        <div class="result-body">
+                            <p><strong>Input:</strong> ${inputText}</p>
+                            <p><strong>Response:</strong> ${excuseText}</p>
                         </div>
                     `;
                     result.className = 'result success';
@@ -221,16 +385,14 @@
             } catch (error) {
                 console.error('Error:', error);
                 resultText.innerHTML = `
-                    <div style="text-align: left;">
-                        <div style="display: flex; align-items: center; margin-bottom: 15px;">
-                            <span style="color: #dc3545; font-size: 1.5em; margin-right: 10px;">❌</span>
-                            <strong style="color: #dc3545; font-size: 1.2em;">Terjadi Kesalahan</strong>
-                        </div>
-                        <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; border-left: 4px solid #dc3545;">
-                            <p style="margin-bottom: 10px;">Maaf, gagal mengirim request ke server.</p>
-                            <p style="margin-bottom: 10px;"><strong>Error:</strong> ${error.message}</p>
-                            <p style="margin-bottom: 0;">Silakan coba lagi nanti.</p>
-                        </div>
+                    <div class="result-header">
+                        <span class="result-icon">❌</span>
+                        <span class="result-title">Terjadi Kesalahan</span>
+                    </div>
+                    <div class="result-body">
+                        <p>Maaf, gagal mengirim request ke server.</p>
+                        <p><strong>Error:</strong> ${error.message}</p>
+                        <p>Silakan coba lagi nanti.</p>
                     </div>
                 `;
                 result.className = 'result error';
@@ -248,13 +410,6 @@
             const result = document.getElementById('result');
             if (result.style.display === 'block') {
                 result.style.display = 'none';
-            }
-        });
-        
-        // Enter key support
-        document.getElementById('inputText').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                document.getElementById('excuseForm').dispatchEvent(new Event('submit'));
             }
         });
     </script>
